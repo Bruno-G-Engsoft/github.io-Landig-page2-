@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Livros Emprestados</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 600px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: darkblue;
+            color: white;
+        }
+        button {
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-renew {
+            background-color: lightblue;
+            color: black;
+        }
+        .btn-renew:hover {
+            background-color: deepskyblue;
+        }
+        .btn-home {
+            background-color: gray;
+            color: white;
+            margin-top: 20px;
+        }
+        .btn-home:hover {
+            background-color: darkgray;
+        }
+    </style>
+    <script>
+        function renovarEmprestimo(linha) {
+            var dataDev = new Date();
+            dataDev.setDate(dataDev.getDate() + 14);
+            linha.dataset.devolucao = dataDev.toISOString().split("T")[0];
+            alert("Empréstimo renovado por mais 14 dias!");
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerenciamento de Livros Emprestados</h2>
+        <table>
+            <tr>
+                <th>Nome do Livro</th>
+                <th>Leitor</th>
+                <th>Ações</th>
+            </tr>
+            <tr class="emprestimo" data-devolucao="2025-06-01">
+                <td>Aventuras Fantásticas</td>
+                <td>João Silva</td>
+                <td>
+                    <button class="btn-renew" onclick="renovarEmprestimo(this.parentNode.parentNode)">Renovar Empréstimo</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>
