@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Novo Usuário</title>
+    <!-- Link para Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 350px;
+        }
+        input, select {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .icon-btn {
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .icon-btn.edit {
+            color: green;
+        }
+        .icon-btn.delete {
+            color: red;
+        }
+        .icon-btn.home {
+            color: darkblue;
+        }
+        .home-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Criar Novo Usuário</h2>
+        <form>
+            <input type="text" placeholder="Nome do Usuário" required>
+            <select required>
+                <option value="" disabled selected>Tipo de Acesso</option>
+                <option value="admin">Administrador</option>
+                <option value="bibliotecario">Bibliotecário</option>
+            </select>
+            <input type="email" placeholder="E-mail" required>
+            <input type="password" placeholder="Senha" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <div class="icon-btn edit" title="Editar Usuário">
+            <i class="fas fa-edit"></i>
+        </div>
+        <div class="icon-btn delete" title="Excluir Usuário">
+            <i class="fas fa-trash"></i>
+        </div>
+
+        <div class="home-container">
+            <a href="index.html">
+                <button>Voltar ao Início</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

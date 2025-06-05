@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimo de Livro</title>
+    <style>
+        body {
+            background-color: aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 350px;
+        }
+        input, select {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            background-color: blue;
+            color: white;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .btn-home {
+            background-color: gray;
+            color: white;
+            margin-top: 20px;
+        }
+        .btn-home:hover {
+            background-color: darkgray;
+        }
+    </style>
+    <script>
+        function calcularDataDevolucao() {
+            var prazo = document.getElementById("prazo").value;
+            var dataEmprestimo = new Date();
+
+            dataEmprestimo.setDate(dataEmprestimo.getDate() + parseInt(prazo));
+            document.getElementById("data-devolucao").value = dataEmprestimo.toISOString().split("T")[0];
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Empréstimo de Livro</h2>
+        <form>
+            <input type="text" placeholder="Nome do Leitor" required>
+            <input type="text" placeholder="CPF" required>
+            <input type="email" placeholder="E-mail" required>
+            <input type="tel" placeholder="Telefone" required>
+            <input type="text" placeholder="Código do Livro" required>
+            <input type="text" placeholder="Nome do Livro" required>
+            <input type="text" placeholder="Autor" required>
+            
+            <label for="prazo">Selecione o prazo de entrega:</label>
+            <select id="prazo" required onchange="calcularDataDevolucao()">
+                <option value="7">7 dias</option>
+                <option value="14">14 dias</option>
+                <option value="21">21 dias</option>
+                <option value="30">30 dias</option>
+            </select>
+
+            <label for="data-devolucao">Data de Devolução:</label>
+            <input type="date" id="data-devolucao" readonly>
+
+            <button type="submit">Realizar Empréstimo</button>
+        </form>
+
+        <a href="index.html"><button class="btn-home">Voltar ao Início</button></a>
+    </div>
+
+</body>
+</html>

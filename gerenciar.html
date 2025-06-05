@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Livros Emprestados</title>
+    <!-- Link para Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 600px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: darkblue;
+            color: white;
+        }
+        button {
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-renew {
+            background-color: lightblue;
+            color: black;
+        }
+        .btn-renew:hover {
+            background-color: deepskyblue;
+        }
+        .btn-multa {
+            background-color: red;
+            color: white;
+        }
+        .btn-multa:hover {
+            background-color: darkred;
+        }
+        .btn-home {
+            background-color: gray;
+            color: white;
+            margin-top: 20px;
+        }
+        .btn-home:hover {
+            background-color: darkgray;
+        }
+    </style>
+    <script>
+        function calcularAtraso(dataDevolucao) {
+            var hoje = new Date();
+            var dataDev = new Date(dataDevolucao);
+            var diferencaDias = Math.floor((hoje - dataDev) / (1000 * 60 * 60 * 24));
+            return diferencaDias > 0 ? diferencaDias : 0;
+        }
+
+        function atualizarStatus() {
+            var linhas = document.querySelectorAll(".emprestimo");
+            linhas.forEach(function(linha) {
+                var dataDevolucao = linha.dataset.devolucao;
+                var atraso = calcularAtraso(dataDevolucao);
+                var statusCell = linha.querySelector(".status");
+                var multaBtn = linha.querySelector(".btn-multa");
+
+                if (atraso > 0) {
+                    statusCell.innerHTML = `Atrasado (${atraso} dias)`;
+                    statusCell.style.color = "red";
+                    multaBtn.style.display = "inline-block";
+                } else {
+                    statusCell.innerHTML = "Dentro do Prazo";
+                    statusCell.style.color = "green";
+                    multaBtn.style.display = "none";
+                }
+            });
+        }
+
+        function aplicarMulta(diasAtraso) {
+            var multa = diasAtraso * 2; 
+            alert("A multa aplicada será de R$" + multa);
+        }
+
+        function renovarEmprestimo(linha) {
+            alert("Empréstimo renovado por mais 14 dias!");
+            var dataDev = new Date(linha.dataset.devolucao);
+            dataDev.setDate(dataDev.getDate() + 14);
+            linha.dataset.devolucao = dataDev.toISOString().split("T")[0];
+            atualizarStatus();
+        }
+
+        window.onload = atualizarStatus;
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerenciamento de Livros Emprestados</h2>
+        <table>
+            <tr>
+                <th>Nome do Livro</th>
+                <th>Leitor</th>
+                <th>Status do Prazo</th>
+                <th>Ações</th>
+            </tr>
+            <tr class="emprestimo" data-devolucao="2025-06-01">
+                <td>Aventuras Fantásticas</td>
+                <td>João Silva</td>
+                <td class="status"></td>
+                <td>
+                    <button class="btn-multa" onclick="aplicarMulta(calcularAtraso('2025-06-01'))">Aplicar Multa</button>
+                    <button class="btn-renew" onclick="renovarEmprestimo(this.parentNode.parentNode)">Renovar Empréstimo</button>
+                </td>
+            </tr>
+        </table>
+        <a href="index.html"><button class="btn-home">Voltar ao Início</button></a>
+    </div>
+
+</body>
+</html>

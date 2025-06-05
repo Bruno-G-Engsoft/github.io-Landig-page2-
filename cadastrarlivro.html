@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
+    <!-- Link para Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: aqua;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 350px;
+        }
+        input, select {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .icon-btn {
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .icon-btn.edit {
+            color: green;
+        }
+        .icon-btn.delete {
+            color: red;
+        }
+        .home-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cadastro de Livros</h2>
+        <form>
+            <input type="text" placeholder="Código" required>
+            <input type="text" placeholder="Nome do Livro" required>
+            <input type="text" placeholder="Nº do ISBN" required>
+            <input type="text" placeholder="Autor" required>
+            <input type="text" placeholder="Editora" required>
+            <select required>
+                <option value="" disabled selected>Classificação</option>
+                <option value="terror">Terror</option>
+                <option value="romance">Romance</option>
+                <option value="aventura">Aventura</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="mistério">Mistério</option>
+                <option value="cientifico">Científico</option>
+                <option value="didatico">Didático</option>
+                <option value="biografia">Biografia</option>
+                <option value="historia">História</option>
+            </select>
+            <input type="number" placeholder="Ano do Livro" required>
+            <input type="text" placeholder="Prateleira" required>
+            <input type="text" placeholder="Estante" required>
+            <input type="file" accept="image/*">
+            <button type="submit">Cadastrar Livro</button>
+        </form>
+
+        <div class="icon-btn edit" title="Editar Livro">
+            <i class="fas fa-edit"></i>
+        </div>
+        <div class="icon-btn delete" title="Excluir Livro">
+            <i class="fas fa-trash"></i>
+        </div>
+
+        <div class="home-container">
+            <a href="principal.html">
+                <button>Voltar ao Início</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
